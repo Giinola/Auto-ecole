@@ -125,6 +125,7 @@ include 'navbar.php';   // session, vérification de connexion + navbar
 
 </body>
 </html>
+
 <style>
 * {
     margin: 0;
