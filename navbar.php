@@ -333,6 +333,7 @@ a {
     .banniere-texte h1 {
         font-size: 26px;
     }
+   
 }
 
     </style>
@@ -343,10 +344,9 @@ a {
         <div class="container navbar-contenu">
 
             <a href="index.php" class="logo">
-                <span class="logo-icone">🚗</span>
-                <span class="logo-nom"><?php echo $nom_ecole; ?></span>
+              <span class="logo-icone"></span>
+               <span class="logo-nom"><?php echo $nom_ecole; ?></span>
             </a>
-
             <button class="bouton-menu" onclick="afficherMenu()">☰</button>
 
           
