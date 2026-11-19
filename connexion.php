@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 session_start();
 require_once 'db.php';
 
@@ -15,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare('SELECT id, nom, email, mot_de_passe, role FROM users WHERE email = :email LIMIT 1');
         $stmt->execute(['email' => $email]);
         $user = $stmt->fetch();
-
+var_dump($user); exit;
         if ($user && $mot_de_passe === $user['mot_de_passe']) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_nom'] = $user['nom'];
