@@ -1,5 +1,9 @@
 <?php
 
+
+session_start();
+
+
 if (!isset($_SESSION['user_id'])) {
     header("Location: connexion.php");
     exit();
@@ -22,52 +26,8 @@ if (!isset($titre_page)) { $titre_page = 'Accueil'; }
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $titre_page; ?> - <?php echo $nom_ecole; ?></title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <header class="header">
-        <div class="container header-contenu">
-
-            <a href="index.php" class="logo">
-                <span class="logo-icone">🚗</span>
-                <span class="logo-nom"><?php echo $nom_ecole; ?></span>
-            </a>
-
-            <button class="bouton-menu" onclick="afficherMenu()">☰</button>
-
-         
-            <nav class="menu" id="menu">
-                <a href="index.php" <?php if ($page_active == 'accueil') echo 'class="actif"'; ?>>Accueil</a>
-                <a href="eleves.php" <?php if ($page_active == 'eleves') echo 'class="actif"'; ?>>Élèves</a>
-                <a href="moniteurs.php" <?php if ($page_active == 'moniteurs') echo 'class="actif"'; ?>>Moniteurs</a>
-                <a href="vehicules.php" <?php if ($page_active == 'vehicules') echo 'class="actif"'; ?>>Véhicules</a>
-                <a href="seances.php" <?php if ($page_active == 'seances') echo 'class="actif"'; ?>>Séances</a>
-                <a href="examens.php" <?php if ($page_active == 'examens') echo 'class="actif"'; ?>>Examens</a>
-                <a href="statistiques.php" <?php if ($page_active == 'statistiques') echo 'class="actif"'; ?>>Statistiques</a>
-            </nav>
-
-            <div class="utilisateur">
-               
-                <span class="utilisateur-nom">👤 <?php echo htmlspecialchars($nom_utilisateur); ?></span>
-                <?php if ($role_utilisateur != '') { ?>
-                    <span class="utilisateur-role"><?php echo htmlspecialchars($role_utilisateur); ?></span>
-                <?php } ?>
-
-                
-                <a href="logout.php" class="bouton-deconnexion">Se déconnecter</a>
-            </div>
-
-        </div>
-    </header>
-
-    
-    <script>
-        function afficherMenu() {
-            document.getElementById("menu").classList.toggle("ouvert");
-        }
-    </script>
     <style>
+
 * {
     margin: 0;
     padding: 0;
@@ -115,8 +75,7 @@ a {
     background-color: #F5E08F;
 }
 
-
-.header {
+.navbar {
     background-color: #FFEFB3;
     border-bottom: 2px solid #013E37;
     position: sticky;
@@ -124,7 +83,7 @@ a {
     z-index: 10;
 }
 
-.header-contenu {
+.navbar-contenu {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -199,7 +158,7 @@ a {
     background-color: #012A26;
 }
 
-/* Bouton menu : caché sur ordinateur */
+
 .bouton-menu {
     display: none;
     background: none;
@@ -211,7 +170,6 @@ a {
     cursor: pointer;
 }
 
-/* ---------- 2. Bannière ---------- */
 .banniere {
     background-color: #013E37;
     color: #ffffff;
@@ -249,7 +207,6 @@ a {
     height: auto;
 }
 
-/* ---------- Sections ---------- */
 .section {
     padding: 60px 0;
 }
@@ -280,6 +237,7 @@ a {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
     transition: transform 0.2s, box-shadow 0.2s;
 }
+
 
 .carte:hover {
     transform: translateY(-4px);
@@ -345,40 +303,10 @@ a {
 }
 
 
-.footer {
-    background-color: #013E37;
-    color: #FFEFB3;
-    padding-top: 40px;
-}
-
-.footer-contenu {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    padding-bottom: 30px;
-}
-
-.footer h3 {
-    color: #ffffff;
-    margin-bottom: 10px;
-}
-
-.footer p {
-    font-size: 14px;
-}
-
-.copyright {
-    text-align: center;
-    border-top: 1px solid #0B5A50;
-    padding: 14px 0;
-    font-size: 13px;
-}
-
-
 @media (max-width: 900px) {
 
-   
-    .header-contenu {
+    
+    .navbar-contenu {
         flex-wrap: wrap;
     }
 
@@ -398,8 +326,7 @@ a {
     }
 
     .banniere-contenu,
-    .presentation,
-    .footer-contenu {
+    .presentation {
         flex-direction: column;
     }
 
@@ -407,4 +334,47 @@ a {
         font-size: 26px;
     }
 }
+
     </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container navbar-contenu">
+
+            <a href="index.php" class="logo">
+                <span class="logo-icone">🚗</span>
+                <span class="logo-nom"><?php echo $nom_ecole; ?></span>
+            </a>
+
+            <button class="bouton-menu" onclick="afficherMenu()">☰</button>
+
+          
+            <div class="menu" id="menu">
+                <a href="index.php" <?php if ($page_active == 'accueil') echo 'class="actif"'; ?>>Accueil</a>
+                <a href="eleves.php" <?php if ($page_active == 'eleves') echo 'class="actif"'; ?>>Élèves</a>
+                <a href="moniteurs.php" <?php if ($page_active == 'moniteurs') echo 'class="actif"'; ?>>Moniteurs</a>
+                <a href="vehicules.php" <?php if ($page_active == 'vehicules') echo 'class="actif"'; ?>>Véhicules</a>
+                <a href="seances.php" <?php if ($page_active == 'seances') echo 'class="actif"'; ?>>Séances</a>
+                <a href="examens.php" <?php if ($page_active == 'examens') echo 'class="actif"'; ?>>Examens</a>
+                <a href="statistiques.php" <?php if ($page_active == 'statistiques') echo 'class="actif"'; ?>>Statistiques</a>
+            </div>
+
+            <div class="utilisateur">
+        
+                <span class="utilisateur-nom">👤 <?php echo htmlspecialchars($nom_utilisateur); ?></span>
+                <?php if ($role_utilisateur != '') { ?>
+                    <span class="utilisateur-role"><?php echo htmlspecialchars($role_utilisateur); ?></span>
+                <?php } ?>
+
+                <a href="logout.php" class="bouton-deconnexion">Se déconnecter</a>
+            </div>
+
+        </div>
+    </nav>
+
+    <script>
+        function afficherMenu() {
+            document.getElementById("menu").classList.toggle("ouvert");
+        }
+    </script>
