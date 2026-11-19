@@ -1,62 +1,11 @@
 <?php
-if (!isset($_SESSION['user_id'])) {
-    
-    header("Location: connexion.php");
-    exit();
-}
-
-
-$nom_utilisateur = $_SESSION['nom'] ?? 'Utilisateur';
-
-
-$nom_ecole = "DriveLike Toretto";
+// index.php - Page d'accueil
+$page_active = 'accueil';
+$titre_page  = 'Accueil';
+include 'navbar.php';   // session, vérification de connexion + navbar
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil - <?php echo $nom_ecole; ?></title>
-    
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-  
-    <header class="header">
-        <div class="container header-contenu">
-
-          
-            <a href="index.php" class="logo">
-                <span class="logo-icone">🚗</span>
-                <span class="logo-nom"><?php echo $nom_ecole; ?></span>
-            </a>
-
-           
-            <button class="bouton-menu" onclick="afficherMenu()">☰</button>
-
-          
-            <nav class="menu" id="menu">
-                <a href="index.php" class="actif">Accueil</a>
-                <a href="eleves.php">Élèves</a>
-                <a href="moniteurs.php">Moniteurs</a>
-                <a href="vehicules.php">Véhicules</a>
-                <a href="seances.php">Séances</a>
-                <a href="examens.php">Examens</a>
-                <a href="statistiques.php">Statistiques</a>
-            </nav>
-
-          
-            <div class="utilisateur">
-                <span>👤 <?php echo htmlspecialchars($nom_utilisateur); ?></span>
-               
-                <a href="logout.php" class="bouton-deconnexion">Déconnexion</a>
-            </div>
-
-        </div>
-    </header>
-
-   
+    <!-- ================= 2. BANNIÈRE ================= -->
     <section class="banniere">
         <div class="container banniere-contenu">
 
@@ -69,16 +18,17 @@ $nom_ecole = "DriveLike Toretto";
                 <a href="eleves.php" class="bouton bouton-blanc">Accéder à la gestion</a>
             </div>
 
-          
+            <!-- Image : voiture dessinée en SVG (pas besoin de fichier image).
+                 Tu peux la remplacer par : <img src="images/voiture.jpg" alt="Voiture"> -->
             <div class="banniere-image">
                 <svg viewBox="0 0 300 140" xmlns="http://www.w3.org/2000/svg">
-                    
+                    <!-- route -->
                     <rect x="0" y="118" width="300" height="6" fill="#ffffff" opacity="0.35"/>
-                   
+                    <!-- carrosserie -->
                     <path d="M30 100 L45 70 Q50 60 62 60 L130 60 Q145 40 175 40 L215 40 Q235 40 245 62 L262 75 Q275 80 275 95 L275 108 L30 108 Z" fill="#FFEFB3"/>
-                  
+                    <!-- vitres -->
                     <path d="M140 62 Q152 48 172 48 L205 48 L212 66 L140 66 Z" fill="#013E37" opacity="0.6"/>
-                   
+                    <!-- roues -->
                     <circle cx="80" cy="108" r="16" fill="#1e293b"/>
                     <circle cx="80" cy="108" r="7" fill="#cbd5e1"/>
                     <circle cx="225" cy="108" r="16" fill="#1e293b"/>
@@ -89,7 +39,7 @@ $nom_ecole = "DriveLike Toretto";
         </div>
     </section>
 
-    
+    <!-- ================= 3. SERVICES (6 CARTES) ================= -->
     <section class="section">
         <div class="container">
             <h2 class="titre-section">Gestion de votre auto-école</h2>
@@ -142,11 +92,11 @@ $nom_ecole = "DriveLike Toretto";
         </div>
     </section>
 
-    
+    <!-- ================= 4. PRÉSENTATION ================= -->
     <section class="section section-grise">
         <div class="container presentation">
 
-           
+            <!-- Image : volant dessiné en SVG -->
             <div class="presentation-image">
                 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="100" cy="100" r="80" fill="none" stroke="#013E37" stroke-width="16"/>
@@ -172,34 +122,6 @@ $nom_ecole = "DriveLike Toretto";
 
         </div>
     </section>
-
-   
-    <footer class="footer">
-        <div class="container footer-contenu">
-
-            <div>
-                <h3><?php echo $nom_ecole; ?></h3>
-                <p>Application de gestion d'une auto-école : élèves, moniteurs, véhicules, séances et examens.</p>
-            </div>
-
-          
-            <div>
-                <h3>Contact</h3>
-                <p>📍 Cybercity, Ebene</p>
-                <p>📞 +230 8574 1236</p>
-                <p>✉️ DriveLikeToretto@auto-ecole.com</p>
-            </div>
-
-        </div>
-        <p class="copyright">&copy; <?php echo date("Y"); ?> <?php echo $nom_ecole; ?> - Tous droits réservés</p>
-    </footer>
-
-   
-    <script>
-        function afficherMenu() {
-            document.getElementById("menu").classList.toggle("ouvert");
-        }
-    </script>
 
 </body>
 </html>
