@@ -34,6 +34,8 @@ $seances = $stmt->fetchAll();
 <section class="section">
   <div class="container">
     <h2 class="titre-section">Séances de conduite</h2>
+    <?php require_once 'fonctions.php'; afficher_flash(); ?>
+      <p style="margin-bottom:16px;"><a class="bouton" href="form_seance.php">+ Ajouter une séance</a></p>
 
     <form class="barre-outils" method="GET">
       <input type="text" name="q" placeholder="Rechercher un élève ou un moniteur..."
@@ -74,7 +76,7 @@ $seances = $stmt->fetchAll();
               <td><?= (int)$s['duree_minutes'] ?> min</td>
               <td><span class="badge <?= $classe ?>"><?= htmlspecialchars($s['statut']) ?></span></td>
               <td class="actions">
-                <a class="bouton petit" href="modifier_seance.php?id=<?= (int)$s['id'] ?>">Modifier</a>
+                <a class="bouton petit" href="form_seance.php?id=<?= (int)$s['id'] ?>">Modifier</a>
                 <a class="bouton petit bouton-danger" href="supprimer_seance.php?id=<?= (int)$s['id'] ?>"
                    onclick="return confirm('Supprimer cette séance ?')">Supprimer</a>
               </td>

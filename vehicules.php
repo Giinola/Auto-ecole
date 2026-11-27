@@ -32,6 +32,8 @@ $vehicules = $stmt->fetchAll();
 <section class="section">
   <div class="container">
     <h2 class="titre-section">Véhicules</h2>
+    <?php require_once 'fonctions.php'; afficher_flash(); ?>
+       <p style="margin-bottom:16px;"><a class="bouton" href="form_vehicule.php">+ Ajouter un véhicule</a></p>
 
     <form class="barre-outils" method="GET">
       <input type="text" name="q" placeholder="Rechercher (marque, modèle, immatriculation)..."
@@ -73,7 +75,7 @@ $vehicules = $stmt->fetchAll();
           <span class="badge <?= $classe ?>"><?= htmlspecialchars(str_replace('_', ' ', $v['etat'])) ?></span>
 
           <div class="actions" style="margin-top:14px;">
-            <a class="bouton petit" href="modifier_vehicule.php?id=<?= (int)$v['id'] ?>">Modifier</a>
+            <a class="bouton petit" href="form_vehicule.php?id=<?= (int)$v['id'] ?>">Modifier</a>
             <a class="bouton petit bouton-danger" href="supprimer_vehicule.php?id=<?= (int)$v['id'] ?>"
                onclick="return confirm('Supprimer ce véhicule ?')">Supprimer</a>
           </div>

@@ -35,6 +35,8 @@ $examens = $stmt->fetchAll();
 <section class="section">
   <div class="container">
     <h2 class="titre-section">Examens</h2>
+    <?php require_once 'fonctions.php'; afficher_flash(); ?>
+      <p style="margin-bottom:16px;"><a class="bouton" href="form_examen.php">+ Ajouter un examen</a></p>
 
     <form class="barre-outils" method="GET">
       <input type="text" name="q" placeholder="Rechercher un élève..."
@@ -79,7 +81,7 @@ $examens = $stmt->fetchAll();
               <td><span class="badge <?= $classe ?>"><?= htmlspecialchars(str_replace('_', ' ', $x['resultat'])) ?></span></td>
               <td><?= $x['note'] !== null ? number_format((float)$x['note'], 2, ',', '') . ' / 20' : '—' ?></td>
               <td class="actions">
-                <a class="bouton petit" href="modifier_examen.php?id=<?= (int)$x['id'] ?>">Modifier</a>
+                <a class="bouton petit" href="form_examen.php?id=<?= (int)$x['id'] ?>">Modifier</a>
                 <a class="bouton petit bouton-danger" href="supprimer_examen.php?id=<?= (int)$x['id'] ?>"
                    onclick="return confirm('Supprimer cet examen ?')">Supprimer</a>
               </td>
