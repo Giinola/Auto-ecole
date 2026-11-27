@@ -32,6 +32,8 @@ $moniteurs = $stmt->fetchAll();
 <section class="section">
   <div class="container">
     <h2 class="titre-section">Moniteurs</h2>
+    <?php require_once 'fonctions.php'; afficher_flash(); ?>
+     <p style="margin-bottom:16px;"><a class="bouton" href="form_moniteur.php">+ Ajouter un moniteur</a></p>
 
     <form class="barre-outils" method="GET">
       <input type="text" name="q" placeholder="Rechercher un moniteur..."
@@ -73,7 +75,7 @@ $moniteurs = $stmt->fetchAll();
           <?php endif; ?>
 
           <div class="actions" style="margin-top:14px;">
-            <a class="bouton petit" href="modifier_moniteur.php?id=<?= (int)$m['id'] ?>">Modifier</a>
+            <a class="bouton petit" href="form_moniteur.php?id=<?= (int)$m['id'] ?>">Modifier</a>
             <a class="bouton petit bouton-danger" href="supprimer_moniteur.php?id=<?= (int)$m['id'] ?>"
                onclick="return confirm('Supprimer ce moniteur ?')">Supprimer</a>
           </div>

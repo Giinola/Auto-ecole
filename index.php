@@ -47,42 +47,42 @@ include 'navbar.php';   // session, vérification de connexion + navbar
             <div class="grille-cartes">
 
                 <div class="carte">
-                    <div class="carte-icone">🧑‍🎓</div>
+                    
                     <h3>Gestion des élèves</h3>
                     <p>Inscrivez vos élèves conducteurs et suivez leur progression.</p>
                     <a href="eleves.php" class="bouton">Consulter</a>
                 </div>
 
                 <div class="carte">
-                    <div class="carte-icone">👨‍🏫</div>
+                    
                     <h3>Gestion des moniteurs</h3>
                     <p>Consultez la liste des moniteurs et leurs informations.</p>
                     <a href="moniteurs.php" class="bouton">Consulter</a>
                 </div>
 
                 <div class="carte">
-                    <div class="carte-icone">🚙</div>
+                    
                     <h3>Gestion des véhicules</h3>
                     <p>Gardez un oeil sur les véhicules de l'auto-école.</p>
                     <a href="vehicules.php" class="bouton">Consulter</a>
                 </div>
 
                 <div class="carte">
-                    <div class="carte-icone">📅</div>
+                    
                     <h3>Séances de conduite</h3>
                     <p>Planifiez les séances entre élèves, moniteurs et véhicules.</p>
                     <a href="seances.php" class="bouton">Consulter</a>
                 </div>
 
                 <div class="carte">
-                    <div class="carte-icone">📝</div>
+                    
                     <h3>Gestion des examens</h3>
                     <p>Enregistrez les examens et leurs résultats.</p>
                     <a href="examens.php" class="bouton">Consulter</a>
                 </div>
 
                 <div class="carte">
-                    <div class="carte-icone">📊</div>
+                    
                     <h3>Statistiques de réussite</h3>
                     <p>Visualisez les taux de réussite aux examens.</p>
                     <a href="statistiques.php" class="bouton">Consulter</a>

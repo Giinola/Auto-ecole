@@ -1,7 +1,7 @@
 <?php
 
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) { session_start(); }
 
 
 if (!isset($_SESSION['user_id'])) {
@@ -157,7 +157,30 @@ a {
 .bouton-deconnexion:hover {
     background-color: #012A26;
 }
+.logo-image {
+    height: 90px;
+    width: auto;
+    margin: -20px 0;          /* le logo a beaucoup de marge vide, on la rogne */
+    mix-blend-mode: multiply; /* fond du logo = fond de la navbar */
+}
 
+.bouton-deconnexion {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+}
+
+.icone-deconnexion {
+    width: 22px;
+    height: 22px;
+    display: block;
+    filter: brightness(0) invert(1);  /* icône blanche sur fond vert */
+}
+
+@media (max-width: 600px) {
+    .logo-image { height: 64px; margin: -14px 0; }
+}
 
 .bouton-menu {
     display: none;
@@ -343,9 +366,9 @@ a {
     <nav class="navbar">
         <div class="container navbar-contenu">
 
-            <a href="index.php" class="logo">
-              <span class="logo-icone"></span>
-               <span class="logo-nom"><?php echo $nom_ecole; ?></span>
+           <a href="index.php" class="logo">
+            <img src="img/Logo.png" alt="Logo " class="logo-image">
+           
             </a>
             <button class="bouton-menu" onclick="afficherMenu()">☰</button>
 
@@ -362,12 +385,14 @@ a {
 
             <div class="utilisateur">
         
-                <span class="utilisateur-nom">👤 <?php echo htmlspecialchars($nom_utilisateur); ?></span>
+                <span class="utilisateur-nom">Bienvenue  <?php echo htmlspecialchars($nom_utilisateur); ?></span>
                 <?php if ($role_utilisateur != '') { ?>
                     <span class="utilisateur-role"><?php echo htmlspecialchars($role_utilisateur); ?></span>
                 <?php } ?>
 
-                <a href="logout.php" class="bouton-deconnexion">Se déconnecter</a>
+                <a href="logout.php" class="bouton-deconnexion" title="Se déconnecter" aria-label="Se déconnecter">
+                    <img src="img/logout.png" alt="" class="icone-deconnexion">
+                </a>
             </div>
 
         </div>

@@ -28,6 +28,8 @@ $eleves = $stmt->fetchAll();
 <section class="section">
   <div class="container">
     <h2 class="titre-section">Élèves</h2>
+    <?php require_once 'fonctions.php'; afficher_flash(); ?>
+       <p style="margin-bottom:16px;"><a class="bouton" href="form_eleve.php">+ Ajouter un élève</a></p>
 
     <form class="barre-outils" method="GET">
       <input type="text" name="q" placeholder="Rechercher un nom ou un e-mail..."
@@ -61,7 +63,7 @@ $eleves = $stmt->fetchAll();
               <td><span class="badge badge-jaune"><?= htmlspecialchars($e['categorie_permis']) ?></span></td>
               <td><?= date('d/m/Y', strtotime($e['date_inscription'])) ?></td>
               <td class="actions">
-                <a class="bouton petit" href="modifier_eleve.php?id=<?= (int)$e['id'] ?>">Modifier</a>
+                <a class="bouton petit" href="form_eleve.php?id=<?= (int)$e['id'] ?>">Modifier</a>
                 <a class="bouton petit bouton-danger" href="supprimer_eleve.php?id=<?= (int)$e['id'] ?>"
                    onclick="return confirm('Supprimer cet élève ?')">Supprimer</a>
               </td>
